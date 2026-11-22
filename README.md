@@ -14,6 +14,7 @@ Thanh điều hướng Virtual Desktop gọn nhẹ đặt ở mép trên màn h�
 ## Tính năng chính
 
 - **Chuyển Virtual Desktop tức thì:** bấm vào thẻ màn hình để chuyển ngay, trạng thái desktop đang dùng được làm nổi bật và cập nhật theo thời gian thực.
+- **Đếm số ứng dụng theo desktop:** tên mỗi desktop hiện kèm số ứng dụng đang mở trên desktop đó, dạng "Tên (số)", giúp nhìn qua là biết desktop nào đang chứa việc gì.
 - **Kết xuất Layered Window trực tiếp:** vẽ bằng Win32 `CreateDIBSection` và `UpdateLayeredWindow` với alpha premultiplied, không nhấp nháy, hỗ trợ nền thanh bar trong suốt 100% hòa vào hình nền desktop.
 - **Phản hồi mượt khi tương tác:** chu kỳ vẽ rút xuống khoảng 8 ms khi di chuột hoặc đang chuyển động, và giãn ra khoảng 50 ms khi đứng yên để giữ mức tải nền thấp.
 - **Giữ chỗ trên màn hình bằng Windows AppBar:** thanh bar đăng ký vùng riêng ở mép trên (`SHAppBarMessage`, `ABE_TOP`) để cửa sổ phóng to không che khuất, kèm tùy chọn tự ẩn khi có ứng dụng chạy toàn màn hình.

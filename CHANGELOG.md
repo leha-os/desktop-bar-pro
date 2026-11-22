@@ -7,7 +7,8 @@ Mọi thay đổi đáng chú ý của LEHA Desktop Bar PRO được ghi tại �
 
 Bản phát hành đầu tiên.
 
-- Dọn code trước phát hành (không đổi tính năng, giao diện hay cấu hình mặc định): bỏ hẳn cụm System Tray đã tắt vốn tham chiếu thư viện không còn dùng, gộp các dòng import bị trùng, bỏ import thừa trong hàm menu chuột phải, thêm docstring mô tả ở đầu file và hằng số `__version__`.
+- Đếm số ứng dụng đang mở trên từng Virtual Desktop và hiện kèm theo tên desktop, có bộ nhớ đệm 600 ms để không tốn tài nguyên.
+- Dọn code (không đổi giao diện hay cấu hình mặc định): bỏ hẳn cụm System Tray đã tắt vốn tham chiếu thư viện không còn dùng, gộp các dòng import bị trùng, bỏ import thừa trong hàm menu chuột phải.
 
 - Thanh điều hướng Virtual Desktop ở mép trên màn hình, chuyển desktop bằng một cú bấm.
 - Kết xuất Win32 Layered Window (`UpdateLayeredWindow`) với alpha premultiplied, nền trong suốt 100% tùy chọn.

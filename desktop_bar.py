@@ -1,41 +1,19 @@
-"""LEHA Desktop Bar PRO - a Virtual Desktop navigation bar for Windows 10/11.
-
-A lightweight bar pinned to the top edge of the screen (Windows AppBar) that
-shows every Virtual Desktop and switches between them with one click. The bar
-is rendered through a Win32 layered window (UpdateLayeredWindow) and can be
-customized live from Pro Studio, a local-only web UI served on 127.0.0.1.
-
-Requirements: Windows 10 (build 1903+) or Windows 11, Python 3.10+,
-Pillow and pyvda (see requirements.txt).
-
-Author: Le Ha
-License: MIT
-"""
-
-import ctypes
-import sys
-
-# Single instance: exit immediately when another copy is already running.
-# This check intentionally stays above the heavier imports.
+import ctypes, sys
 _mutex = ctypes.windll.kernel32.CreateMutexW(None, False, "LEHA_DESKTOP_BAR_SINGLE_INSTANCE_MUTEX")
-if ctypes.windll.kernel32.GetLastError() == 183:  # ERROR_ALREADY_EXISTS
+if ctypes.windll.kernel32.GetLastError() == 183:
     sys.exit(0)
-
-import json
-import math
-import os
-import shutil
-import subprocess
-import threading
 import tkinter as tk
-import winreg
 from ctypes import wintypes
+import threading
+import subprocess
+import os
+import json
+import shutil
+import winreg
+import math
 from http.server import BaseHTTPRequestHandler, HTTPServer
-
+from pyvda import VirtualDesktop, get_virtual_desktops, get_apps_by_z_order
 from PIL import Image, ImageDraw, ImageFont
-from pyvda import VirtualDesktop, get_virtual_desktops
-
-__version__ = "1.0.0"
 
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(2)
@@ -628,10 +606,34 @@ class SystemWorkspacesBar:
         finally:
             user32.UnregisterHotKey(None, HOTKEY_ID)
 
+    def get_desktop_app_counts(self):
+        now_ms = int(ctypes.windll.kernel32.GetTickCount64())
+        if hasattr(self, "_app_count_cache") and (now_ms - getattr(self, "_last_app_count_ms", 0) < 600):
+            return self._app_count_cache
+        counts = {}
+        try:
+            for app in get_apps_by_z_order(switcher_windows=True, current_desktop=False):
+                try:
+                    d_num = app.desktop.number
+                    counts[d_num] = counts.get(d_num, 0) + 1
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        self._app_count_cache = counts
+        self._last_app_count_ms = now_ms
+        return counts
+
     def get_all_desktops_data(self):
         try:
             curr_num = VirtualDesktop.current().number
-            items = [(d.number, d.name if (d.name and d.name.strip()) else f"Desktop {d.number}") for d in get_virtual_desktops()]
+            app_counts = self.get_desktop_app_counts()
+            items = []
+            for d in get_virtual_desktops():
+                base_name = d.name if (d.name and d.name.strip()) else f"Desktop {d.number}"
+                cnt = app_counts.get(d.number, 0)
+                display_name = f"{base_name} ({cnt})" if cnt > 0 else base_name
+                items.append((d.number, display_name))
             return curr_num, tuple(items)
         except Exception:
             return 1, ((1, "Desktop 1"),)
