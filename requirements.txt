@@ -1,0 +1,3 @@
+# Runtime dependencies for LEHA Desktop Bar PRO (Windows 10/11, Python 3.10+)
+Pillow>=10.0
+pyvda>=0.5

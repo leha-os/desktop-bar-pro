@@ -1,0 +1,96 @@
+{
+  "bar_transparent": true,
+  "color_mode": "multi",
+  "pill_style": "filled",
+  "bg_color": "#0d0d10",
+  "border_color": "#222226",
+  "mono_idle_bg": "#18181f",
+  "mono_idle_text": "#b4b4be",
+  "mono_active_bg": "#0284c7",
+  "mono_active_text": "#ffffff",
+  "mono_accent": "#38bdf8",
+  "multi_pills": {
+    "1": {
+      "bg": "#0284c7",
+      "fg": "#ffffff",
+      "accent": "#38bdf8"
+    },
+    "2": {
+      "bg": "#059669",
+      "fg": "#ffffff",
+      "accent": "#34d399"
+    },
+    "3": {
+      "bg": "#7c3aed",
+      "fg": "#ffffff",
+      "accent": "#c084fc"
+    },
+    "4": {
+      "bg": "#ea580c",
+      "fg": "#ffffff",
+      "accent": "#fb923c"
+    },
+    "5": {
+      "bg": "#db2777",
+      "fg": "#ffffff",
+      "accent": "#f472b6"
+    },
+    "6": {
+      "bg": "#ca8a04",
+      "fg": "#ffffff",
+      "accent": "#facc15"
+    },
+    "7": {
+      "bg": "#0d9488",
+      "fg": "#ffffff",
+      "accent": "#2dd4bf"
+    },
+    "8": {
+      "bg": "#4f46e5",
+      "fg": "#ffffff",
+      "accent": "#818cf8"
+    },
+    "9": {
+      "bg": "#0284c7",
+      "fg": "#ffffff",
+      "accent": "#38bdf8"
+    },
+    "10": {
+      "bg": "#059669",
+      "fg": "#ffffff",
+      "accent": "#34d399"
+    },
+    "11": {
+      "bg": "#7c3aed",
+      "fg": "#ffffff",
+      "accent": "#c084fc"
+    },
+    "12": {
+      "bg": "#ea580c",
+      "fg": "#ffffff",
+      "accent": "#fb923c"
+    }
+  },
+  "idle_has_bg": true,
+  "active_underline": false,
+  "active_border": true,
+  "active_pop_padding": 2,
+  "hover_zoom": false,
+  "show_dot": false,
+  "font_weight": "bold",
+  "font_italic": false,
+  "text_case": "normal",
+  "layout_mode": "center",
+  "pill_size": "wide",
+  "pill_gap": 22,
+  "pill_radius": 9,
+  "height": 32,
+  "opacity": 0.94,
+  "auto_hide_fullscreen": false,
+  "hover_padding": 6,
+  "max_zoom": 1.45,
+  "smoothness": 0.35,
+  "bar_height": 34,
+  "hover_radius": 90,
+  "autostart": true
+}
